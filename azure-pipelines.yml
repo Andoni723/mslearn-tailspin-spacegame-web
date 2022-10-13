@@ -77,6 +77,15 @@ steps:
     feedPublish: '$(System.TeamProject)/Tailspin2.SpaceGame.Web.Models'
     allowPackageConflicts: true
   condition: succeeded()
+
+- task: NuGetCommand@2
+  inputs:
+    command: Pack NuGet
+    packagesToPack: '**/*.csproj'
+    packDestination: '$(Build.ArtifactStagingDirectory)'
+
+- task: NuGetAuthenticate@0
+  displayName: 'NuGet Authenticate'
   
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
