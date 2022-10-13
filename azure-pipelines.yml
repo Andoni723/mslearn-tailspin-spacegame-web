@@ -80,7 +80,7 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
-    command: Pack NuGet
+    command: pack
     packagesToPack: '**/*.csproj'
     packDestination: '$(Build.ArtifactStagingDirectory)'
 
